@@ -5,7 +5,7 @@
     - name: Install dependencies
       package:
         name:
-          - curl
+          #- curl
           - rsyslog
           - openssl
         state: present
