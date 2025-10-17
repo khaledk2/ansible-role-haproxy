@@ -13,6 +13,12 @@ platforms:
     image_version: latest
     command: /sbin/init
     privileged: true
+    cgroupns_mode: host
+    tmpfs:
+      - /sys/fs/cgroup
+    groups:
+      - docker-hosts
+
 provisioner:
   name: ansible
   lint:
