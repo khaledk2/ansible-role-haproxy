@@ -19,6 +19,7 @@
       become: true
 
   roles:
+    - ome.selinux_utils
     - role: ome.haproxy
       haproxy_syslog_enable: true
       haproxy_syslog_configure_udp: true
