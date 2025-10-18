@@ -20,7 +20,7 @@ platforms:
       - docker-hosts
       - extra_options
       - py3
-    pre_build_image: true
+    #pre_build_image: true
     volumes:
         - /sys/fs/cgroup:/sys/fs/cgroup:ro
 
