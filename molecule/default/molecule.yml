@@ -27,8 +27,12 @@ platforms:
 
 provisioner:
   name: ansible
+  group_vars:
+    all:
+      ansible_remote_tmp: /tmp
   lint:
     name: ansible-lint
+
 scenario:
   name: default
 verifier:
