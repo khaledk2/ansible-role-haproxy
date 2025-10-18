@@ -14,16 +14,14 @@ platforms:
     command: /sbin/init
     privileged: true
     cgroupns_mode: host
+    tmpfs:
+      - /sys/fs/cgroup
     groups:
       - extra_options
     #pre_build_image: true
-    volumes:
-        - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    #volumes:
+    #    - /sys/fs/cgroup:/sys/fs/cgroup:ro
     pre_build_image: true
-
-
-
-
 
 provisioner:
   name: ansible
