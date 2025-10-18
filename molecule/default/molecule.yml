@@ -19,10 +19,10 @@ platforms:
     groups:
       - docker-hosts
       - extra_options
-      - py3
     #pre_build_image: true
     volumes:
         - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
 
 provisioner:
   name: ansible
@@ -30,8 +30,7 @@ provisioner:
     name: ansible-lint
   inventory:
     group_vars:
-      py3:
-        ansible_python_interpreter:  /usr/bin/python3
+
 scenario:
   name: default
 verifier:
