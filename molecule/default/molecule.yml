@@ -18,6 +18,7 @@ platforms:
       - /sys/fs/cgroup
     groups:
       - docker-hosts
+      - extra_options
 
 provisioner:
   name: ansible
