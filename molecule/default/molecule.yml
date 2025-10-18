@@ -30,8 +30,6 @@ provisioner:
       ansible_remote_tmp: /tmp
   lint:
     name: ansible-lint
-    playbooks:
-      converge: playbook.yml
 
 scenario:
   name: default
