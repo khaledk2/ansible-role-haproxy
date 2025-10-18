@@ -3,11 +3,12 @@
   hosts: all
   pre_tasks:
     - name: Install dependencies
-      package:
+      dnf:
         name:
-          #- curl
+          - curl
           - rsyslog
           - openssl
+        allowerasing: true
         state: present
     - name: Ensure dummy certificate is in place
       command: >-
@@ -19,7 +20,6 @@
       become: true
 
   roles:
-    - ome.selinux_utils
     - role: ome.haproxy
       haproxy_syslog_enable: true
       haproxy_syslog_configure_udp: true
