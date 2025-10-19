@@ -18,44 +18,12 @@
   debug:
     msg: "Journal out: {{ rsyslog_status_journal }}"
 
+
 - name: Debug output of   rsyslog
   become: true
   ansible.builtin.command:
-     systemctl stop rsyslog
-
-  register: rsyslog_status
+    setenforce 0
   ignore_errors: yes
-- name: Debug output of   rsyslog
-  become: true
-  ansible.builtin.command:
-     rm -f /var/run/rsyslogd.pid
-
-  register: rsyslog_status
-
-- name: Debug output of   rsyslog
-  become: true
-  ansible.builtin.command:
-    mv /var/lib/rsyslog/imjournal.state /var/lib/rsyslog/imjournal.state.bak 2>/dev/null
-
-  register: rsyslog_status
-
-- name: Debug output of   rsyslog
-  become: true
-  ansible.builtin.command:
-    mkdir -p /var/lib/rsyslog
-  register: rsyslog_status
-
-- name: Debug output of   rsyslog
-  become: true
-  ansible.builtin.command:
-     chown syslog:syslog /var/lib/rsyslog
-
-  register: rsyslog_status
--
-  name: Debug output of   rsyslog
-  become: true
-  ansible.builtin.command:
-      systemctl start rsyslog
   register: rsyslog_status
 
 - name: Show journal output
