@@ -28,11 +28,9 @@
 
 - name: Show journal output
   debug:
-    msg: "{{ rsyslog_status.stderr }}"
+    msg: "{{ rsyslog_status }}"
 
-- name: Show output
-  debug:
-    msg: "{{ rsyslog_status.stderr }}"
+
 
 - name: Show output
   debug:
