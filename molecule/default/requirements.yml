@@ -1,3 +1,6 @@
 ---
-- src: ome.selinux_utils
+
+- name: selinux_utils
+  src: https://github.com/khaledk2/ansible-role-selinux-utils
+  version: update_ansible
 

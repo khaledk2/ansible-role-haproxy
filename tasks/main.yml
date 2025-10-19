@@ -7,32 +7,14 @@
   when: haproxy_syslog_enable
   ignore_errors: yes
 
-
 - name: Debug output of systemclt rsyslog
   become: true
   ansible.builtin.command: "journalctl -xeu rsyslog.service"
   register: rsyslog_status_journal
 
-
 - name: Show journal output
   debug:
     msg: "Journal out: {{ rsyslog_status_journal }}"
-
-
-- name: Debug output of   rsyslog
-  become: true
-  ansible.builtin.command:  setenforce 0
-  ignore_errors: yes
-  register: rsyslog_status
-
-- name: Show journal output
-  debug:
-    msg: "{{ rsyslog_status }}"
-
-
-- name: Show output
-  debug:
-    msg: "{{ rsyslog_status.stderr }}"
 
 - name: Ensure HAProxy is installed
   become: true
