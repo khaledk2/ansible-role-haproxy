@@ -21,15 +21,13 @@
 
 - name: Debug output of   rsyslog
   become: true
-  ansible.builtin.command:
-    setenforce 0
+  ansible.builtin.command:  setenforce 0
   ignore_errors: yes
   register: rsyslog_status
 
 - name: Show journal output
   debug:
     msg: "{{ rsyslog_status }}"
-
 
 
 - name: Show output
