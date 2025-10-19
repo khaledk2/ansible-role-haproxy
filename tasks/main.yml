@@ -22,7 +22,12 @@
 - name: Debug output of   rsyslog
   become: true
   ansible.builtin.command:
-    ausearch -m avc -ts recent
+    - systemctl stop rsyslog
+    - rm -f /var/run/rsyslogd.pid
+    - mv /var/lib/rsyslog/imjournal.state /var/lib/rsyslog/imjournal.state.bak 2>/dev/null
+    - mkdir -p /var/lib/rsyslog
+    - chown syslog:syslog /var/lib/rsyslog
+    - systemctl start rsyslog
   register: rsyslog_status
   ignore_errors: yes
 
