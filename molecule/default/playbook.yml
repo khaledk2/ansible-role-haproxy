@@ -3,14 +3,6 @@
   hosts: all
   pre_tasks:
 
-    - name: Install dependencies
-      dnf:
-        name:
-          - curl
-          - rsyslog
-          - openssl
-        state: present
-        allowerasing: true
 
     - name: test
       command: 'openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/certs/dummy.pem -out /etc/ssl/certs/dummy.pem -subj "/CN=localhost"'

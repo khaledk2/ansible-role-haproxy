@@ -9,10 +9,9 @@ lint: |
     flake8
 platforms:
   - name: haproxy-c7
-
-    pre_build_image: true
-    image: rockylinux:9
-    dockerfile: Dockerfile.j2
+    #pre_build_image: true
+    image: eniocarboni/docker-rockylinux-systemd:9
+    #dockerfile: Dockerfile.j2
     image_version: latest
     command: /sbin/init
     privileged: true
@@ -24,6 +23,9 @@ platforms:
       - /tmp
     groups:
       - extra_options
+    extra_packages:
+      - rsyslog
+      - openssl
     #pre_build_image: true
     #volumes:
     #    - /sys/fs/cgroup:/sys/fs/cgroup:ro
