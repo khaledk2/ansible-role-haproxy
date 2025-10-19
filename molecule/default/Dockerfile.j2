@@ -1,0 +1,4 @@
+FROM rockylinux:9
+RUN dnf -y install systemd-sysv sudo python3 && dnf clean all
+VOLUME ["/sys/fs/cgroup"]
+CMD ["/sbin/init"]
