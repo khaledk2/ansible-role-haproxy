@@ -17,7 +17,6 @@
         state: present
 
     - name: test
-      become: true
       command: 'openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/certs/dummy.pem -out /etc/ssl/certs/dummy.pem -subj "/CN=localhost"'
       args:
         creates: /etc/ssl/certs/dummy.pem
