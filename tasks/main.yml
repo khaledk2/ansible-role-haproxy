@@ -1,4 +1,26 @@
 ---
+- name: restart rsyslog
+  become: true
+  service:
+    name: rsyslog
+    state: restarted
+  when: haproxy_syslog_enable
+  ignore_errors: yes
+- name: Debug output of systemclt rsyslog
+  become: true
+  ansible.builtin.command:
+    rsyslogd -dn
+  register: rsyslog_status
+  ignore_errors: yes
+
+- name: Show output
+  debug:
+    msg: "{{ rsyslog_status.stdout }}"
+
+- name: Show error
+  debug:
+    msg: "{{ rsyslog_status.stderr }}"
+
 - name: Ensure HAProxy is installed
   become: true
   package:
