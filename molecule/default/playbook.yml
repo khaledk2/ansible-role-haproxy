@@ -2,13 +2,18 @@
 - name: Converge
   hosts: all
   pre_tasks:
+    - name: swap curl
+      dnf: curl-minimal
+      state: absent
+
+
     - name: Install dependencies
       dnf:
         name:
           - curl
           - rsyslog
           - openssl
-        allowerasing: true
+        # allowerasing: true
         state: present
     - name: Ensure dummy certificate is in place
       command: >-
