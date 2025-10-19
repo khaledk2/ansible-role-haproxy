@@ -6,18 +6,37 @@
     state: restarted
   when: haproxy_syslog_enable
   ignore_errors: yes
+
+
 - name: Debug output of systemclt rsyslog
+  become: true
+  ansible.builtin.command:
+    journalctl -xeu rsyslog.service
+  register: rsyslog_status_journal
+  ignore_errors: yes
+
+
+- name: Show journal output
+  debug:
+    msg: "Journal out: {{ rsyslog_status_journal }}"
+
+
+- name: Debug output of   rsyslog
   become: true
   ansible.builtin.command:
     rsyslogd -dn
   register: rsyslog_status
   ignore_errors: yes
 
+- name: Show journal output
+  debug:
+    msg: "{{ rsyslog_status.stderr }}"
+
 - name: Show output
   debug:
-    msg: "{{ rsyslog_status.stdout }}"
+    msg: "{{ rsyslog_status.stderr }}"
 
-- name: Show error
+- name: Show output
   debug:
     msg: "{{ rsyslog_status.stderr }}"
 
