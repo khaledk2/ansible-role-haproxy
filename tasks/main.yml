@@ -10,10 +10,8 @@
 
 - name: Debug output of systemclt rsyslog
   become: true
-  ansible.builtin.command:
-    journalctl -xeu rsyslog.service
+  ansible.builtin.command: "journalctl -xeu rsyslog.service"
   register: rsyslog_status_journal
-  ignore_errors: yes
 
 
 - name: Show journal output
@@ -24,7 +22,7 @@
 - name: Debug output of   rsyslog
   become: true
   ansible.builtin.command:
-    rsyslogd -dn
+    rsyslogd -N1
   register: rsyslog_status
   ignore_errors: yes
 
