@@ -2,9 +2,11 @@
 - name: Converge
   hosts: all
   pre_tasks:
+
     - name: swap curl
-      dnf: curl-minimal
-      state: absent
+      dnf:
+        name: curl-minimal
+        state: absent
 
 
     - name: Install dependencies
