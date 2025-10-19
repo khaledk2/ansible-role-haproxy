@@ -3,10 +3,7 @@
   hosts: all
   pre_tasks:
 
-    - name: Remove curl-minimal
-      dnf:
-        name: curl-minimal
-        state: absent
+
 
     - name: Install dependencies
       dnf:
@@ -15,6 +12,7 @@
           - rsyslog
           - openssl
         state: present
+        allowlisting: true
 
     - name: test
       command: 'openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/certs/dummy.pem -out /etc/ssl/certs/dummy.pem -subj "/CN=localhost"'
