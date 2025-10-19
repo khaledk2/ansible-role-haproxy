@@ -22,7 +22,7 @@
 - name: Debug output of   rsyslog
   become: true
   ansible.builtin.command:
-    ls -l /run/systemd/journal/socket
+    ausearch -m avc -ts recent
   register: rsyslog_status
   ignore_errors: yes
 
