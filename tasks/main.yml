@@ -22,7 +22,7 @@
 - name: Debug output of   rsyslog
   become: true
   ansible.builtin.command:
-    rsyslogd -N1
+    grep -E 'module\(load=' /etc/rsyslog.conf /etc/rsyslog.d/*.conf
   register: rsyslog_status
   ignore_errors: yes
 
