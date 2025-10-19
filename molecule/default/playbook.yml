@@ -14,7 +14,6 @@
           - curl
           - rsyslog
           - openssl
-        # allowerasing: true
         state: present
 
     - name: Ensure dummy certificate is in place
