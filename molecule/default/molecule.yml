@@ -8,7 +8,7 @@ lint: |
     ansible-lint
     flake8
 platforms:
-  - name: haproxy-c7
+  - name: haproxy-r9
     #pre_build_image: true
     image: eniocarboni/docker-rockylinux-systemd:9
     #dockerfile: Dockerfile.j2
@@ -33,9 +33,10 @@ platforms:
 
 provisioner:
   name: ansible
-  group_vars:
-    all:
-      ansible_remote_tmp: /tmp
+  inventory:
+    group_vars:
+      all:
+        ansible_remote_tmp: /tmp
   lint:
     name: ansible-lint
 
